@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import profileImg from "../imports/profile.png";
+import profileImg from "../../src/imports/profile.png";
 
 const titles = ["Full Stack Developer", "MERN Stack Developer", "Backend Developer", "Problem Solver"];
 
