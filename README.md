@@ -10,11 +10,8 @@ Hi, I'm **Ritesh Dhakulkar**, a Computer Technology engineering student and aspi
 - **Languages:** C, C++, Java, Python, JavaScript
 - **Tools:** Git, GitHub, VS Code, Eclipse/STS, Postman
 - **Deployment:** Vercel, Render
-## 📌 Featured Projects
 
-- **RetailGenie AI** – AI-powered inventory management application with voice and OCR-based inventory entry.
-- **NexCartify** – MERN stack e-commerce platform with authentication, cart management, admin panel, and Cloudinary integration.
-- **HRMS** – Full-stack Human Resource Management System built with React and Spring Boot.
+
 ##🤝 Let's Connect
 
 I'm always interested in learning, building, collaborating on projects, and exploring new opportunities in software development.
