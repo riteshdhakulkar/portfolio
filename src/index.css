@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600;1,9..144,700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+html, body, #root {
+  height: 100%;
+}
+
+:root {
+  /* Dark theme default */
+  --bg: #0B0C10;
+  --bg2: #111318;
+  --fg: #EDE8E3;
+  --fg-muted: #6B6F7D;
+  --fg-dim: #3A3D4A;
+  --border: #1C1F2B;
+  --border-light: #252836;
+  --card: #13151C;
+  --card2: #171A24;
+  --accent: #E8924A;
+  --accent-dim: rgba(232, 146, 74, 0.12);
+  --accent-hover: #D4803A;
+  --nav-bg: rgba(11, 12, 16, 0.88);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html.light {
+  --bg: #F4F1EC;
+  --bg2: #EEEBE4;
+  --fg: #1A1612;
+  --fg-muted: #7A7060;
+  --fg-dim: #C4BBAD;
+  --border: #DDD9D0;
+  --border-light: #E8E4DC;
+  --card: #FFFFFF;
+  --card2: #F8F5F0;
+  --accent: #C4692A;
+  --accent-dim: rgba(196, 105, 42, 0.1);
+  --accent-hover: #A85820;
+  --nav-bg: rgba(244, 241, 236, 0.9);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+* { box-sizing: border-box; }
+
+::-webkit-scrollbar { width: 0; }
+
+/* ── Animations ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+@keyframes progressLoad {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.progress-bar {
+  transform-origin: left;
+  animation: progressLoad 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in { animation: fadeIn 0.5s ease both; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-inner { animation: marquee 28s linear infinite; }
+
+/* Dot grid pattern */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--fg-dim) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Noise texture overlay */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* Selection color */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Hover link underline */
+.link-hover {
+  position: relative;
+  display: inline-block;
+}
+.link-hover::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+.link-hover:hover::after { width: 100%; }
+
+/* Skill pill */
+.skill-pill {
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.skill-pill:hover {
+  background: var(--accent-dim) !important;
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Card lift */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px -12px rgba(0,0,0,0.5);
+}
+
+html.light .card-lift:hover {
+  box-shadow: 0 16px 48px -12px rgba(0,0,0,0.15);
+}
