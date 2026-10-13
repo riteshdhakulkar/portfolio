@@ -1,54 +1,23 @@
 import { useState } from "react";
 import { SectionHead } from "./About";
-import nexcartify1 from "../imports/image-2.png";
-import nexcartify2 from "../imports/image-3.png";
-import nexcartify3 from "../imports/image-4.png";
-import nexcartify4 from "../imports/image-5.png";
-import construction1 from "../imports/construction-1.png";
-import skh1 from "../imports/skh-1.png";
-import skh2 from "../imports/skh-2.png";
-import skh3 from "../imports/skh-3.png";
-import skh4 from "../imports/skh-4.png";
 
-// ─── Desktop Screenshots (all current images are desktop only) ───────────────
-const nexcartifyDesktop = [nexcartify1, nexcartify2, nexcartify3, nexcartify4];
-const skhDesktop = [skh1, skh2, skh3, skh4];
-const constructionDesktop = [construction1];
-
-// TODO: RetailGenie AI — desktop screenshots
-// Upload images to src/imports/, then import and fill this array:
-// import retailgenieD1 from "../imports/retailgenie-desktop-1.png";
+// Project Screenshots — add new screenshot image URLs or imports as needed
+const nexcartifyDesktop: string[] = [];
+const skhDesktop: string[] = [];
+const constructionDesktop: string[] = [];
 const retailgenieDesktop: string[] = [];
-
-// TODO: Unnati Pharma — desktop screenshots
-// Upload images to src/imports/, then import and fill this array:
-// import unnatiD1 from "../imports/unnati-desktop-1.png";
 const unnatiDesktop: string[] = [];
+const techfestDesktop: string[] = [
+  "/images/techfest1.png",
+  "/images/techfest2.png",
+  "/images/techfest3.png",
+];
 
 // ─── Mobile Screenshots (add separately — portrait 9:16 shots) ───────────────
-// To add mobile screenshots for any project:
-//   1. Upload portrait screenshots to src/imports/
-//   2. Import them: import nexcartifyM1 from "../imports/nexcartify-mobile-1.png";
-//   3. Fill the array below for that project
-
-// TODO: NexCartify mobile screenshots
-// import nexcartifyM1 from "../imports/nexcartify-mobile-1.png";
 const nexcartifyMobile: string[] = [];
-
-// TODO: RetailGenie AI mobile screenshots (this is a mobile app — priority!)
-// import retailgenieM1 from "../imports/retailgenie-mobile-1.png";
 const retailgenieMobile: string[] = [];
-
-// TODO: Unnati Pharma mobile screenshots
-// import unnatiM1 from "../imports/unnati-mobile-1.png";
 const unnatiMobile: string[] = [];
-
-// TODO: SKH Hospital mobile screenshots
-// import skhM1 from "../imports/skh-mobile-1.png";
 const skhMobile: string[] = [];
-
-// TODO: Construction Admin mobile screenshots
-// import constructionM1 from "../imports/construction-mobile-1.png";
 const constructionMobile: string[] = [];
 
 type Project = {
@@ -65,6 +34,16 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    id: 5,
+    name: "Lesson Plan Builder — ZeroCode",
+    shortName: "LPB",
+    desc: "Interactive Lesson Plan Builder developed for the ZeroCode event at IIT Bombay Techfest (Nagpur Zonal). Empowers educators to rapidly structure curriculums, organize modular teaching units, format pedagogical objectives, and generate ready-to-teach lesson plans.",
+    tech: ["React.js", "JavaScript", "Web Tech", "Rapid Prototyping"],
+    live: "https://lesson-plan-builder-gamma.vercel.app",
+    color: "#0B1528",
+    accent: "#38BDF8",
+  },
   {
     id: 1,
     name: "NexCartify",
@@ -127,6 +106,7 @@ const desktopMap: Record<number, string[]> = {
   2: retailgenieDesktop,
   3: unnatiDesktop,
   4: skhDesktop,
+  5: techfestDesktop,
   7: constructionDesktop,
 };
 
@@ -135,6 +115,7 @@ const mobileMap: Record<number, string[]> = {
   2: retailgenieMobile,
   3: unnatiMobile,
   4: skhMobile,
+  5: techfestDesktop,
   7: constructionMobile,
 };
 

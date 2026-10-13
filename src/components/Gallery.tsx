@@ -40,87 +40,16 @@ const ExpandIcon = () => (
 //  That's it! Newest photo goes first, older ones shift down automatically.
 // ════════════════════════════════════════════════════════════════
 
-import gallery1 from "../imports/gallery-1.png";
-import gallery2 from "../imports/gallery-2.png";
-import gallery3 from "../imports/gallery-3.png";
-import gallery4 from "../imports/gallery-4.png";
-import gallery5 from "../imports/gallery-5.png";
-import gallery6 from "../imports/gallery-6.png";
-import gallery7 from "../imports/gallery-7.png";
-import gallery8 from "../imports/gallery-8.png";
-// STEP 2 goes here ↓ (add your next import below this line)
-// import gallery9 from "../imports/gallery-9.png";
-
 type Photo = {
   src: string;
   caption: string;
   event: string;
   year: string;
-  wide?: boolean; // set true for landscape shots to span wider in grid
+  wide?: boolean;
 };
 
-const photos: Photo[] = [
-  // STEP 3 goes here ↓ (paste your new photo entry above all others)
-  // {
-  //   src: gallery9,
-  //   caption: "Your photo title here",
-  //   event: "Your Role · Organization · PCE",
-  //   year: "2025",
-  //   wide: true,   // optional — use for wide/group photos
-  // },
-  {
-    src: gallery8,
-    caption: "Appointed Secretary — PCE ACM Student Chapter",
-    event: "Secretary · ACM Student Chapter · PCE",
-    year: "2025",
-  },
-  {
-    src: gallery7,
-    caption: "Addressing the Gathering — Literary Club 2025–26",
-    event: "Joint Secretary · Literary Club of PCE · Upcoming Event Address",
-    year: "2025",
-  },
-  {
-    src: gallery6,
-    caption: "Joint Secretary — Literary Club of PCE 2025–26",
-    event: "Joint Secretary · Literary Club · PCE",
-    year: "2025",
-  },
-  {
-    src: gallery5,
-    caption: "Featured on ACM India Website — Highest Activities",
-    event: "PCE ACM Student Chapter · National Recognition · ACM India",
-    year: "2025",
-    wide: true,
-  },
-  {
-    src: gallery4,
-    caption: "Membership Chair — PCE ACM Student Chapter 2025–26",
-    event: "Membership Chair · ACM Student Chapter · PCE",
-    year: "2025",
-  },
-  {
-    src: gallery3,
-    caption: "Installation Ceremony — Sakal Newspaper Coverage",
-    event: "Logistics Committee Coordinator · Sakal YIN MahaClub · PCE",
-    year: "2025",
-    wide: true,
-  },
-  {
-    src: gallery2,
-    caption: "Receiving Recognition — YIN MahaClub 2024–25",
-    event: "Logistics Committee Coordinator · Sakal YIN · PCE",
-    year: "2025",
-  },
-  // TODO: Add newer photos above this one as you upload them
-  {
-    src: gallery1,
-    caption: "SCOOP Inauguration — Sthapnam 2024–25",
-    event: "Event Manager · SCOOP PCE · Departmental Forum",
-    year: "2024",
-    wide: true,
-  },
-];
+// Add photos once uploaded (e.g. { src: '/images/gallery/...', caption: '...', event: '...', year: '2025' })
+const photos: Photo[] = [];
 
 const INITIAL_COUNT = 4;
 
@@ -150,15 +79,33 @@ export default function Gallery() {
           developer.
         </p>
 
-        {/* Masonry grid */}
-        <div className="mt-16 columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          {visible.map((photo, i) => (
+        {photos.length === 0 ? (
+          <div
+            className="mt-16 p-12 rounded-2xl border text-center flex flex-col items-center justify-center gap-3"
+            style={{ background: "var(--card)", borderColor: "var(--border-light)" }}
+          >
             <div
-              key={i}
-              className="break-inside-avoid group relative rounded-2xl overflow-hidden cursor-pointer card-lift"
-              style={{ border: "1px solid var(--border-light)" }}
-              onClick={() => setLightbox(photo)}
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ background: "var(--accent-dim)", color: "var(--accent)" }}
             >
+              <ExpandIcon />
+            </div>
+            <p style={{ fontFamily: "var(--font-sans)", fontSize: "0.95rem", fontWeight: 500, color: "var(--fg)" }}>
+              Gallery Updating
+            </p>
+            <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.75rem", color: "var(--fg-muted)", maxWidth: "42ch" }}>
+              Upload your event and leadership photos to showcase your college milestones and activities.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-16 columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {visible.map((photo, i) => (
+              <div
+                key={i}
+                className="break-inside-avoid group relative rounded-2xl overflow-hidden cursor-pointer card-lift"
+                style={{ border: "1px solid var(--border-light)" }}
+                onClick={() => setLightbox(photo)}
+              >
               <img
                 src={photo.src}
                 alt={photo.caption}
@@ -220,8 +167,9 @@ export default function Gallery() {
               </div>
             </div>
           ))}
-        </div>
-        {/* See More / Show Less */}
+          </div>
+        )}
+      {/* See More / Show Less */}
         {photos.length > INITIAL_COUNT && (
           <div className="mt-10 flex justify-center">
             <button

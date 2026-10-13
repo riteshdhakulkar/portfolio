@@ -1,5 +1,6 @@
 import { SectionHead } from "./About";
-import offerLetter from "../imports/offerletter.pdf";
+
+const offerLetter = "/offerletter.pdf";
 
 const internship = {
   title: "Full Stack Intern",

@@ -1,37 +1,5 @@
 import { useState } from "react";
 import { SectionHead } from "./About";
-import offerLetter from "../imports/offerletter.pdf";
-
-// ════════════════════════════════════════════════════════════════
-//  HOW TO ADD A NEW CERTIFICATE — 3 steps:
-//
-//  STEP 1 — Upload your certificate image in Figma Make, then in terminal:
-//           cp src/imports/image-XX.png src/imports/cert-yourname.png
-//
-//  STEP 2 — Add an import line below (follow the same pattern):
-//           import certYourName from "../imports/cert-yourname.png";
-//
-//  STEP 3 — Add a new entry at the TOP of the `certs` array:
-//           {
-//             id: 8,                          // next unused number
-//             title: "Certificate Title",
-//             issuer: "Issuing Organization",
-//             date: "Mon YYYY",
-//             color: "#1C0A00",               // dark bg color for thumbnail
-//             accent: "#FB923C",              // highlight color
-//             image: certYourName,            // your imported image
-//           },
-//
-//  For a PDF (like offer letter), use `pdf: yourPdf` instead of `image`.
-//  For a cert with no image yet, use `noImage: true` temporarily.
-// ════════════════════════════════════════════════════════════════
-
-import certJavaSE from "../imports/cert-javase.png";
-import certJavaEE from "../imports/cert-javaee.png";
-import certSpringBoot from "../imports/cert-springboot.png";
-import certHtmlCssReact from "../imports/cert-htmlcssreact.png";
-// STEP 2 goes here ↓
-// import certYourName from "../imports/cert-yourname.png";
 
 type Cert = {
   id: number;
@@ -47,16 +15,16 @@ type Cert = {
 };
 
 const certs: Cert[] = [
-  // STEP 3 goes here ↓ (paste your new certificate entry above all others)
-  // {
-  //   id: 8,
-  //   title: "Certificate Title",
-  //   issuer: "Issuing Organization",
-  //   date: "Mon YYYY",
-  //   color: "#1C0A00",
-  //   accent: "#FB923C",
-  //   image: certYourName,
-  // },
+  {
+    id: 7,
+    title: "IIT Bombay Techfest — ZeroCode",
+    issuer: "Techfest, IIT Bombay (Nagpur Zonal)",
+    date: "Zonal Event",
+    color: "#0B1528",
+    accent: "#38BDF8",
+    image: "/images/Techfest Participation Certificate.png",
+    special: true,
+  },
   {
     id: 1,
     title: "Java SE – Core Java Programming",
@@ -64,7 +32,7 @@ const certs: Cert[] = [
     date: "Jul 2025",
     color: "#1C0A00",
     accent: "#FB923C",
-    image: certJavaSE,
+    image: "/images/JavaSE.png",
   },
   {
     id: 2,
@@ -73,7 +41,7 @@ const certs: Cert[] = [
     date: "Nov 2025",
     color: "#0F1C2E",
     accent: "#38BDF8",
-    image: certJavaEE,
+    image: "/images/JavaEE.png",
   },
   {
     id: 3,
@@ -82,7 +50,7 @@ const certs: Cert[] = [
     date: "Feb 2026",
     color: "#052E16",
     accent: "#34D399",
-    image: certSpringBoot,
+    image: "/images/SpringFrameworkSpringboot.png",
   },
   {
     id: 4,
@@ -91,30 +59,7 @@ const certs: Cert[] = [
     date: "Sep 2026",
     color: "#2E1065",
     accent: "#C084FC",
-    image: certHtmlCssReact,
-  },
-  {
-    id: 5,
-    title: "Internship Offer Letter",
-    issuer: "Industry Internship",
-    date: "2026",
-    color: "#1C1917",
-    accent: "#E8924A",
-    pdf: offerLetter,
-    special: true,
-  },
-  {
-    // TODO: Mock Parliament certificate — upload image to src/imports/ and add:
-    // import mockParliament from "../imports/mock-parliament.png";
-    // Then add `image: mockParliament` to this object and remove `noImage: true`
-    id: 6,
-    title: "Certificate of Appreciation",
-    issuer: "National Level Mock Parliament — Volunteering",
-    date: "Coming soon",
-    color: "#1C1917",
-    accent: "#F59E0B",
-    noImage: true,
-    special: true,
+    image: "/images/HtmlCssReact.png",
   },
 ];
 
@@ -126,7 +71,7 @@ export default function Certifications() {
       <div className="max-w-6xl mx-auto px-6">
         <SectionHead num="05" title="Certifications & Achievements" />
 
-        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {certs.map((cert) => (
             <button
               key={cert.id}

@@ -1,7 +1,7 @@
 const stats = [
   { value: "6+", label: "Projects Shipped", desc: "Full-stack applications" },
   { value: "1", label: "Internship", desc: "Professional experience" },
-  { value: "6+", label: "Certificates", desc: "Verified credentials" },
+  { value: "5", label: "Certificates", desc: "Verified credentials" },
   { value: "2027", label: "Graduation", desc: "B.Tech Computer Engineering" },
 ];
 

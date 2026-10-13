@@ -1,0 +1,8 @@
+{
+  "name": "Ritesh Dhakulkar Portfolio",
+  "description": "Full Stack Developer & MERN Stack Engineer portfolio showcasing projects, experience, skills, certifications, and achievements.",
+  "prompt": "Full Stack Developer Portfolio",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import profileImg from "../../src/imports/profile.png";
+
+// Linked profile image from /public/images/profile.png
+const profileImg = "/images/profile.png";
 
 const titles = ["Full Stack Developer", "MERN Stack Developer", "Backend Developer", "Problem Solver"];
 
@@ -53,42 +55,43 @@ export default function Hero() {
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 w-full pt-28 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left — 7 cols */}
-          <div className="lg:col-span-7">
-            {/* Status chip */}
-            <div
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 fade-up"
-              style={{
-                background: "var(--card)",
-                border: "1px solid var(--border-light)",
-                animationDelay: "0.05s",
-              }}
-            >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: "#4ADE80" }}
-              />
-              <span
-                style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--fg-muted)",
-                }}
-              >
-                Open to internships & opportunities
-              </span>
-            </div>
+        {/* Status chip */}
+        <div
+          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8 fade-up"
+          style={{
+            background: "var(--card)",
+            border: "1px solid var(--border-light)",
+            animationDelay: "0.05s",
+          }}
+        >
+          <span
+            className="w-1.5 h-1.5 rounded-full"
+            style={{ background: "#4ADE80" }}
+          />
+          <span
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: "0.65rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: "var(--fg-muted)",
+            }}
+          >
+            Open to internships & opportunities
+          </span>
+        </div>
 
+        {/* Hero Main Content: Name, Bio & Profile Picture side by side */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center mb-10">
+          {/* Left — Name, typing & description (7 cols) */}
+          <div className="lg:col-span-7">
             {/* Name */}
             <h1
               className="fade-up"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 300,
-                fontSize: "clamp(3rem, 7vw, 5.5rem)",
+                fontSize: "clamp(2.75rem, 6.5vw, 5.25rem)",
                 lineHeight: 1.05,
                 letterSpacing: "-0.03em",
                 color: "var(--fg)",
@@ -113,7 +116,7 @@ export default function Hero() {
 
             {/* Typing */}
             <div
-              className="fade-up flex items-center gap-2 mt-5 mb-7"
+              className="fade-up flex items-center gap-2 mt-4 mb-6"
               style={{ animationDelay: "0.2s" }}
             >
               <span
@@ -151,7 +154,7 @@ export default function Hero() {
 
             {/* Description */}
             <p
-              className="fade-up mb-10 max-w-lg"
+              className="fade-up max-w-xl"
               style={{
                 fontFamily: "var(--font-sans)",
                 fontSize: "1rem",
@@ -164,74 +167,6 @@ export default function Hero() {
               applications, intuitive user experiences, and efficient backend systems
               using the MERN stack.
             </p>
-
-            {/* CTAs */}
-            <div className="fade-up flex flex-wrap gap-3 mb-10" style={{ animationDelay: "0.36s" }}>
-              <a
-                href="/resume.pdf"
-                download="Ritesh_Dhakulkar_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
-                style={{
-                  background: "var(--accent)",
-                  color: "#fff",
-                  fontFamily: "var(--font-sans)",
-                  letterSpacing: "0.02em",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-hover)")}
-                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
-              >
-                <DownIcon /> Download Resume
-              </a>
-              <a
-                href="#projects"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium border transition-all duration-200"
-                style={{
-                  color: "var(--fg)",
-                  borderColor: "var(--border-light)",
-                  background: "var(--card)",
-                  fontFamily: "var(--font-sans)",
-                }}
-              >
-                View Projects <ArrowIcon />
-              </a>
-              <a
-                href="#contact"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium border transition-all duration-200"
-                style={{
-                  color: "var(--fg-muted)",
-                  borderColor: "var(--border-light)",
-                  background: "transparent",
-                  fontFamily: "var(--font-sans)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--accent)";
-                  e.currentTarget.style.borderColor = "var(--accent)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--fg-muted)";
-                  e.currentTarget.style.borderColor = "var(--border-light)";
-                }}
-              >
-                Contact Me
-              </a>
-            </div>
-
-            {/* Social row */}
-            <div className="fade-up flex items-center gap-6" style={{ animationDelay: "0.44s" }}>
-              <SocialLink href="https://github.com/riteshdhakulkar" label="GitHub">
-                <GHIcon /> GitHub
-              </SocialLink>
-              <div style={{ width: 1, height: 14, background: "var(--border-light)" }} />
-              <SocialLink href="https://linkedin.com/in/riteshdhakulkar" label="LinkedIn">
-                <LIIcon /> LinkedIn
-              </SocialLink>
-              <div style={{ width: 1, height: 14, background: "var(--border-light)" }} />
-              <SocialLink href="mailto:riteshdhakulkar1905@gmail.com" label="Email">
-                <MailIcon /> Email
-              </SocialLink>
-            </div>
           </div>
 
           {/* Right — profile — 5 cols */}
@@ -244,17 +179,42 @@ export default function Hero() {
               <CornerMark pos="bottom-0 right-0" both />
 
               <div
-                className="w-64 h-72 md:w-72 md:h-80 lg:w-80 lg:h-96 m-4 rounded-2xl overflow-hidden"
+                className="w-64 h-72 md:w-72 md:h-80 lg:w-80 lg:h-96 m-4 rounded-2xl overflow-hidden flex items-center justify-center"
                 style={{
                   background: "var(--card2)",
                   border: "1px solid var(--border-light)",
                 }}
               >
-                <img
-                  src={profileImg}
-                  alt="Ritesh Dhakulkar"
-                  className="w-full h-full object-cover object-top"
-                />
+                {profileImg ? (
+                  <img
+                    src={profileImg}
+                    alt="Ritesh Dhakulkar"
+                    className="w-full h-full object-cover object-top"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center select-none" style={{ background: "linear-gradient(145deg, var(--card2) 0%, var(--card) 100%)" }}>
+                    <div
+                      className="w-24 h-24 rounded-full flex items-center justify-center mb-4 border"
+                      style={{
+                        background: "var(--accent-dim)",
+                        borderColor: "var(--accent)",
+                        color: "var(--accent)",
+                        fontFamily: "var(--font-display)",
+                        fontSize: "2.25rem",
+                        fontStyle: "italic",
+                        fontWeight: 600,
+                      }}
+                    >
+                      RD
+                    </div>
+                    <p style={{ fontFamily: "var(--font-sans)", fontSize: "1rem", fontWeight: 600, color: "var(--fg)" }}>
+                      Ritesh Dhakulkar
+                    </p>
+                    <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", color: "var(--accent)", letterSpacing: "0.08em", marginTop: "0.25rem" }}>
+                      // FULL STACK ENGINEER
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Floating tech badge */}
@@ -274,6 +234,77 @@ export default function Hero() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Action Buttons & Social Links */}
+        <div className="fade-up flex flex-col md:flex-row md:items-center justify-between gap-6 pt-6" style={{ animationDelay: "0.36s" }}>
+          {/* CTAs */}
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="/resume.pdf"
+              download="Ritesh_Dhakulkar_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200"
+              style={{
+                background: "var(--accent)",
+                color: "#fff",
+                fontFamily: "var(--font-sans)",
+                letterSpacing: "0.02em",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--accent-hover)")}
+              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--accent)")}
+            >
+              <DownIcon /> Download Resume
+            </a>
+            <a
+              href="#projects"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium border transition-all duration-200"
+              style={{
+                color: "var(--fg)",
+                borderColor: "var(--border-light)",
+                background: "var(--card)",
+                fontFamily: "var(--font-sans)",
+              }}
+            >
+              View Projects <ArrowIcon />
+            </a>
+            <a
+              href="#contact"
+              className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium border transition-all duration-200"
+              style={{
+                color: "var(--fg-muted)",
+                borderColor: "var(--border-light)",
+                background: "transparent",
+                fontFamily: "var(--font-sans)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "var(--accent)";
+                e.currentTarget.style.borderColor = "var(--accent)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "var(--fg-muted)";
+                e.currentTarget.style.borderColor = "var(--border-light)";
+              }}
+            >
+              Contact Me
+            </a>
+          </div>
+
+          {/* Social row */}
+          <div className="flex items-center gap-6">
+            <SocialLink href="https://github.com/riteshdhakulkar" label="GitHub">
+              <GHIcon /> GitHub
+            </SocialLink>
+            <div style={{ width: 1, height: 14, background: "var(--border-light)" }} />
+            <SocialLink href="https://linkedin.com/in/riteshdhakulkar" label="LinkedIn">
+              <LIIcon /> LinkedIn
+            </SocialLink>
+            <div style={{ width: 1, height: 14, background: "var(--border-light)" }} />
+            <SocialLink href="mailto:riteshdhakulkar1905@gmail.com" label="Email">
+              <MailIcon /> Email
+            </SocialLink>
           </div>
         </div>
       </div>
