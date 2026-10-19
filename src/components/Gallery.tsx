@@ -48,10 +48,50 @@ type Photo = {
   wide?: boolean;
 };
 
-// Add photos once uploaded (e.g. { src: '/images/gallery/...', caption: '...', event: '...', year: '2025' })
-const photos: Photo[] = [];
+// Photos in reverse chronological order (newest at the top)
+const photos: Photo[] = [
+  {
+    src: "/images/secretaryACM26-27.jpeg",
+    caption: "Appointed as Secretary — PCE ACM Student Chapter 🎓🧡",
+    event: "Secretary · PCE ACM Student Chapter · 2026–27 Tenure",
+    year: "2026–27",
+    wide: true,
+  },
+  {
+    src: "/images/literaryclubExperience.jpeg",
+    caption: "Sharing Experience with New Committee & Tenure",
+    event: "Mentorship & Leadership Transition · Literary Club · PCE",
+    year: "2025–26",
+    wide: true,
+  },
+  {
+    src: "/images/secretaryLiterarycluib25-26.jpeg",
+    caption: "Joint Secretary Journey — Literary Club of PCE 🎤✨",
+    event: "Joint Secretary · Literary Club of PCE · 2025–26 Session",
+    year: "2025–26",
+  },
+  {
+    src: "/images/membershipchairACM25-26.jpeg",
+    caption: "Membership Chair — PCE ACM Student Chapter",
+    event: "Executive Committee · PCE ACM Student Chapter · 2025–26 Tenure",
+    year: "2025–26",
+  },
+  {
+    src: "/images/logisticSakalYIN24-25.jpeg",
+    caption: "Logistics Committee Coordinator — Sakal’s YIN MahaClub 🌟",
+    event: "Young Inspirators Network (YIN) MahaClub · PCE · 2024–25 Session",
+    year: "2024–25",
+    wide: true,
+  },
+  {
+    src: "/images/scoopEM24-25.jpeg",
+    caption: "Event Manager — SCOOP (2024–25) SCOoP PCE",
+    event: "Event Management & Departmental Forum · SCOOP PCE · 2024–25",
+    year: "2024–25",
+  },
+];
 
-const INITIAL_COUNT = 4;
+const INITIAL_COUNT = 3;
 
 export default function Gallery() {
   const [lightbox, setLightbox] = useState<Photo | null>(null);
@@ -98,75 +138,78 @@ export default function Gallery() {
             </p>
           </div>
         ) : (
-          <div className="mt-16 columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {visible.map((photo, i) => (
               <div
                 key={i}
-                className="break-inside-avoid group relative rounded-2xl overflow-hidden cursor-pointer card-lift"
-                style={{ border: "1px solid var(--border-light)" }}
+                className="group relative rounded-2xl overflow-hidden cursor-pointer card-lift aspect-[4/3] w-full"
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border-light)",
+                }}
                 onClick={() => setLightbox(photo)}
               >
-              <img
-                src={photo.src}
-                alt={photo.caption}
-                className="w-full object-cover block"
-                loading="lazy"
-              />
+                <img
+                  src={photo.src}
+                  alt={photo.caption}
+                  className="w-full h-full object-cover object-center block group-hover:scale-[1.04] transition-transform duration-300"
+                  loading="lazy"
+                />
 
-              {/* Hover overlay */}
-              <div
-                className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-250"
-                style={{
-                  background:
-                    "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: "0.55rem",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "var(--accent)",
-                    marginBottom: "0.3rem",
-                  }}
-                >
-                  {photo.year}
-                </span>
-                <p
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: "0.95rem",
-                    fontStyle: "italic",
-                    fontWeight: 400,
-                    color: "#fff",
-                    lineHeight: 1.35,
-                    marginBottom: "0.2rem",
-                  }}
-                >
-                  {photo.caption}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: "0.7rem",
-                    color: "rgba(255,255,255,0.65)",
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {photo.event}
-                </p>
-
-                {/* Expand icon */}
+                {/* Hover overlay — anchored at bottom */}
                 <div
-                  className="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center"
-                  style={{ background: "rgba(0,0,0,0.5)", color: "#fff" }}
+                  className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-250 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.55) 55%, transparent 100%)",
+                  }}
                 >
-                  <ExpandIcon />
+                  <span
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: "0.55rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--accent)",
+                      marginBottom: "0.25rem",
+                    }}
+                  >
+                    {photo.year}
+                  </span>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "0.95rem",
+                      fontStyle: "italic",
+                      fontWeight: 400,
+                      color: "#fff",
+                      lineHeight: 1.3,
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    {photo.caption}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontSize: "0.7rem",
+                      color: "rgba(255,255,255,0.7)",
+                      lineHeight: 1.35,
+                    }}
+                  >
+                    {photo.event}
+                  </p>
+
+                  {/* Expand icon */}
+                  <div
+                    className="absolute top-3 right-3 w-7 h-7 rounded-full flex items-center justify-center"
+                    style={{ background: "rgba(0,0,0,0.5)", color: "#fff" }}
+                  >
+                    <ExpandIcon />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
           </div>
         )}
       {/* See More / Show Less */}
